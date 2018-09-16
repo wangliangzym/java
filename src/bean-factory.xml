@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--通过静态工厂方法配置bean
+    class：指向惊涛工厂方法的全类名
+    factory-method：指向静态工厂中的静态方法
+    constructor-arg: 如果静态方法中有参数需要传递，则使用constructor-arg来传递参数
+    -->
+    <bean id="car" class="com.zym.factory.StaticCarFactory" factory-method="getCar">
+        <constructor-arg value="audi"/>
+    </bean>
+
+    <!--通过实例化工厂方法配置bean-->
+    <bean id="carFactory" class="com.zym.factory.InstanceCarFactory"/>
+
+    <bean id="car2" factory-bean="carFactory" factory-method="getCar">
+        <constructor-arg value="ford"/>
+    </bean>
+
+    <!--
+        通过spring自带的FactoryBean来配置bean
+    -->
+    <bean id="car3" class="com.zym.factory.CarFactoryBean"></bean>
+</beans>

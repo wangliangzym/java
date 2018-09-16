@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="member1" class="com.zym.relation.Member" p:name="赵越妹" p:age="26" p:sex="女" p:kid="我们的孩子"></bean>
+
+    <!--此处可以不使用class 而是使用parent来体现继承关系，member2中的属性可以覆盖member1中的属性-->
+    <bean id="member2" parent="member1" p:name="王亮" p:age="26" p:sex="男"></bean>
+
+    <bean id="family" class="com.zym.relation.Family" p:number="3" p:hobby="吃吃吃，玩玩玩">
+       <property name="members">
+           <list>
+               <ref bean="member1"/>
+               <ref bean="member2"/>
+           </list>
+       </property>
+    </bean>
+
+</beans>

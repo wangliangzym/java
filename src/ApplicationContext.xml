@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 注入bean的两种方式 1：属性注入 -->
+    <bean id="car1" class="com.zym.hello.Car">
+        <property name="name" value="AUDO"></property>
+        <property name="factory" value="ShangHai"></property>
+        <property name="price" value="20000"></property>
+        <property name="speed" value="160"></property>
+    </bean>
+
+    <bean id="car2" class="com.zym.hello.Car">
+        <property name="name" value="BAOMA"></property>
+        <property name="factory" value="HuBei"></property>
+        <property name="price" value="30000"></property>
+        <property name="speed" value="300"></property>
+    </bean>
+
+    <!--构造注入bean的方式-->
+    <bean id="dog" class="com.zym.hello.Animal">
+        <constructor-arg value="hashiqi"></constructor-arg>
+        <constructor-arg value="nan"></constructor-arg>
+        <constructor-arg value="16"></constructor-arg>
+    </bean>
+    <bean id="dog1" class="com.zym.hello.Animal">
+        <property name="name" value="taidi"></property>
+        <property name="age" value="3"></property>
+        <property name="sex" value="nuv"></property>
+    </bean>
+
+    <!--配置list-->
+    <bean id="person" class="com.zym.hello.Person">
+        <property name="name" value="张三"></property>
+        <property name="age" value="16"></property>
+        <property name="animal" ref="dog"></property>
+        <property name="cars">
+            <list>
+                <ref bean="car1"/>
+                <ref bean="car2"/>
+            </list>
+        </property>
+    </bean>
+
+    <!--配置map-->
+    <bean id="newPerson" class="com.zym.hello.NewPerson">
+        <property name="name" value="王五"></property>
+        <property name="age" value="20"></property>
+        <property name="map">
+            <map>
+                <entry key="aa" value-ref="dog"/>
+                <entry key="bb" value-ref="dog1"/>
+            </map>
+        </property>
+    </bean>
+</beans>

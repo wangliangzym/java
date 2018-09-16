@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--当配置bean中的scope=singleton的时候，在初始化这个容器的时候，相应的bean就会被创建
+        在用getBean方法的时候，就会直接获取这个创建好的bean，而当scope=prototype的时候，
+        初始化容器的时候不会去创建相应的bean，而是在gebean()的时候采取创建这个bean-->
+    <bean id="person" class="com.zym.scope.Person" scope="prototype">
+        <property name="name" value="赵越妹"/>
+        <property name="sex" value="女"/>
+        <property name="age" value="26"/>
+    </bean>
+</beans>
